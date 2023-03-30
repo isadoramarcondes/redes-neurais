@@ -297,7 +297,7 @@ def funcao_objetivo_cb(individuo):
     return sum(individuo)
 
 
-# NOVIDADE
+
 def funcao_objetivo_cnb(individuo):
     """Computa a função objetivo no problema das caixas não-binárias.
     Args:
@@ -327,6 +327,7 @@ def funcao_objetivo_senha(individuo, senha_verdadeira):
         diferenca = diferenca + abs(ord(letra_candidato) - ord(letra_oficial))
 
     return diferenca
+
 
 
 ###############################################################################
@@ -363,7 +364,7 @@ def funcao_objetivo_pop_cnb(populacao):
     return fitness
 
 
-# NOVIDADE
+
 def funcao_objetivo_pop_senha(populacao, senha_verdadeira):
     """Computa a funcao objetivo de uma populaçao no problema da senha.
     Args:
