@@ -317,9 +317,7 @@ def funcao_objetivo_senha(individuo, senha_verdadeira):
       senha_verdadeira: a senha que você está tentando descobrir
     
     Returns:
-      A "distância" entre a senha proposta e a senha verdadeira. Essa distância
-      é medida letra por letra. Quanto mais distante uma letra for da que
-      deveria ser, maior é essa distância.
+      A "distância" entre a senha proposta e a senha verdadeira. Essa distância é medida letra por letra. Quanto mais distante uma letra for da que deveria ser, maior é essa distância.
     """
     diferenca = 0
 
