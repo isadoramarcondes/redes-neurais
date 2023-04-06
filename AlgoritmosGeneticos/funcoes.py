@@ -341,11 +341,13 @@ def cruzamento_ponto_senha_variavel(pai, mae):
       Duas listas, sendo que cada uma representa um filho dos pais que foram os
       argumentos, filhos de tamanhos variáveis.
     """
-    ponto_de_corte_pai = random.randint(1, len(pai) - 1)
-    ponto_de_corte_mae = random.randint(1, len(mae) - 1)
-
-    filho1 = pai[:ponto_de_corte_pai] + mae[ponto_de_corte_mae:]
-    filho2 = mae[:ponto_de_corte_mae] + pai[ponto_de_corte_pai:]
+    if len(mae) < len(pai):
+        ponto_de_corte = random.randint(1, len(mae) - 1)
+    elif len(mae) >= len(pai) :
+        ponto_de_corte = random.randint(1, len(pai) - 1)
+    
+    filho1 = pai[:ponto_de_corte] + mae[ponto_de_corte:]
+    filho2 = mae[:ponto_de_corte] + pai[ponto_de_corte:]
 
     return filho1, filho2
 
@@ -429,26 +431,24 @@ def mutacao_senha(individuo, letras):
     individuo[gene] = gene_letra(letras)
     return individuo
 
-def mutacao_senha_variavel(individuo, letras, maximo):
+def mutacao_senha_variavel_tamanho(individuo, letras):
     """Realiza a mutação de um gene no problema da senha.
     Args:
       individuo: uma lista representado um individuo no problema da senha
       letras: letras possíveis de serem sorteadas.
-      maximo: inteiro representando o tamanho máximo de letras que a senha pode ter.
     Return:
       Um individuo (senha) com um gene mutado.
     """
-    if random.random() < .5:
+    if random.random() < 0.5:
         gene = random.randint(0, len(individuo) - 1)
         individuo[gene] = gene_letra(letras)
         return individuo
     else:
-        novo_tamanho = random.randint(3,maximo)
-        if novo_tamanho < len(individuo):
-            return individuo[:maximo]
+        if random.random() < 0.5:
+            return individuo[:-1]
         else:
-            for _ in range(novo_tamanho - len(individuo)):
-                individuo.append(gene_letra(letras))
+            gene = random.randint(0, len(individuo) - 1)
+            individuo.insert(gene, gene_letra(letras))
             return individuo
 
 def mutacao_de_troca(individuo):
@@ -512,22 +512,24 @@ def funcao_objetivo_senha(individuo, senha_verdadeira):
 
     return diferenca
 
+
 def funcao_objetivo_senha_variavel(individuo, senha_verdadeira, peso_penalidade):
     """Computa a funcao objetivo de um individuo no problema da senha
-    
     Args:
       individiuo: lista contendo as letras da senha
       senha_verdadeira: a senha que você está tentando descobrir
-      peso_penalidade =  peso que a diferença de tamanho de senhas terá
+      peso_penalidade: peso adicionado para a diferença de tamanho entre a lista teste e a lita certa (o valor do fit para cada erro) - faz o fit ficar maior
     Returns:
-      A "distância" entre a senha proposta e a senha verdadeira. Essa distância é medida letra por letra. Quanto mais distante uma letra for da que deveria ser, maior é essa distância.
+      A "distância" entre a senha proposta e a senha verdadeira. Essa distância é medida letra por letra. Quanto mais distante uma letra for da que
+      deveria ser, maior é essa distância.
     """
     diferenca = 0
 
-    for letra_candidato, letra_oficial in zip(individuo, senha_verdadeira):
+    for letra_candidato, letra_oficial in zip(individuo, senha_verdadeira): #itera as duas listas ao mesmo tempo
         diferenca = diferenca + abs(ord(letra_candidato) - ord(letra_oficial))
+    
     diferenca_tamanho = abs(len(individuo) - len(senha_verdadeira))
-    diferenca += peso_penalidade * diferenca_tamanho
+    diferenca += peso_penalidade * diferenca_tamanho**2
 
     return diferenca
 
@@ -625,7 +627,7 @@ def funcao_objetivo_pop_senha_variavel(populacao, senha_verdadeira, peso_penalid
     resultado = []
 
     for individuo in populacao:
-        resultado.append(funcao_objetivo_senha_variavel(individuo, senha_verdadeira,peso_penalidade))
+        resultado.append(funcao_objetivo_senha_variavel(individuo, senha_verdadeira, peso_penalidade))
 
     return resultado
 
