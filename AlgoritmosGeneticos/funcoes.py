@@ -166,13 +166,13 @@ def individuo_cv(cidades):
       Retorna uma lista de nomes de cidades formando um caminho onde visitamos
       cada cidade apenas uma vez.
     """
-    pass
+    nomes = list(cidades.keys())
+    random.shuffle(nomes) # embaralhamento dos nomes
+    return nomes
 
 ###############################################################################
 #                                  População                                  #
 ###############################################################################
-
-
 def populacao_cb(tamanho, n):
     """Cria uma população no problema das caixas binárias.
     Args:
@@ -230,8 +230,6 @@ def populacao_inicial_senha_variavel(tamanho, maximo, letras):
         populacao.append(individuo_senha_variavel(maximo, letras))
     return populacao
 
-
-# NOVIDADE
 def populacao_inicial_cv(tamanho, cidades):
     """Cria população inicial no problema do caixeiro viajante.
     Args
@@ -351,24 +349,38 @@ def cruzamento_ponto_senha_variavel(pai, mae):
 
     return filho1, filho2
 
-# NOVIDADE
 def cruzamento_ordenado(pai, mae):
     """Operador de cruzamento ordenado.
+   
     Neste cruzamento, os filhos mantém os mesmos genes que seus pais tinham,
     porém em uma outra ordem. Trata-se de um tipo de cruzamento útil para
     problemas onde a ordem dos genes é importante e não podemos alterar os genes
     em si. É um cruzamento que pode ser usado no problema do caixeiro viajante.
+    
     Ver pág. 37 do livro do Wirsansky.
+    
     Args:
       pai: uma lista representando um individuo
       mae : uma lista representando um individuo
+    
     Returns:
       Duas listas, sendo que cada uma representa um filho dos pais que foram os
       argumentos. Estas listas mantém os genes originais dos pais, porém altera
       a ordem deles
     """
-    pass
-
+    corte1 = random.randint(0, len(pai)-2)
+    corte2 = random.randint(corte1 + 1, len(pai)-1)
+    filho1 = pai[corte1:corte2]
+    for gene in mae:
+        if gene not in filho1:
+            filho1.append(gene)
+            
+    filho2 = mae[corte1:corte2]
+    for gene in pai:
+        if gene not in filho2:
+            filho2.append(gene)
+            
+    return filho1, filho2
 
 ###############################################################################
 #                                   Mutação                                   #
@@ -439,8 +451,6 @@ def mutacao_senha_variavel(individuo, letras, maximo):
                 individuo.append(gene_letra(letras))
             return individuo
 
-
-# NOVIDADE
 def mutacao_de_troca(individuo):
     """Troca o valor de dois genes.
     Args:
@@ -449,7 +459,14 @@ def mutacao_de_troca(individuo):
       O indivíduo recebido como argumento, porém com dois dos seus genes
       trocados de posição.
     """
-    pass
+    indices = list(range(len(individuo)))
+    lista_sorteada = random.sample(indices, k=2)#escolhe um elemento entre os apresentado
+    indice1 = lista_sorteada[0]
+    indice2 = lista_sorteada[1]
+    
+    individuo[indice1],individuo[indice2] = individuo[indice2],individuo[indice1]
+    
+    return individuo
 
 ###############################################################################
 #                         Função objetivo - indivíduos                        #
@@ -531,8 +548,19 @@ def funcao_objetivo_cv(individuo, cidades):
 
     distancia = 0
 
-    # preencher o código
-
+    for posicao in range(len(individuo)-1):
+        partida = cidades[individuo[posicao]]
+        chegada = cidades[individuo[posicao + 1]]
+        
+        percurso = distancia_entre_dois_pontos(partida,chegada)
+        distancia = distancia + percurso
+    
+    # calculando o caminho de volta para a cidade inicial
+    partida = cidades[individuo[-1]]
+    chegada = cidades[individuo[0]]
+    
+    percurso = distancia_entre_dois_pontos(partida, chegada)
+    distancia = distancia + percurso
     return distancia
 
 ###############################################################################
