@@ -21,7 +21,7 @@ O problema das caixas não-binárias consistem em um certo número de caixas e c
 - `experimento A.05 - descobrindo a senha`
 Usar um algoritmo genético para descobrir uma senha. Neste problema, a função objetivo deve saber a senha correta e quantificar de alguma maneira o quão perto ou longe os palpites estão da solução. O critério de parada deste problema é quando a senha for descoberta.
 
-- experimento A.06 - o caixeiro viajante
+- `experimento A.06 - o caixeiro viajante`
 O problema consiste em descobrir a rota de menor distância entre $n$ pontos no plano cartesiano (ou seja, $n$ pontos com coordenadas $(x,y)$). A rota pode se iniciar em qualquer um dos pontos disponíveis e deve terminar no ponto inicial, visitando todos os demais pontos apenas uma vez. Considere que a rota entre um ponto e outro é a linha reta que liga os dois pontos.
 
 - `experimento A.07 - aplicando restricoes`
