@@ -1,6 +1,11 @@
 # Experimentos de otimização e algoritmos genéticos
+<p align="justify">
+Este é um repositório dedicado ao estudo de algoritmos genéticos. Aqui você encontrará recursos e materiais para ajudá-lo a entender e implementar algoritmos genéticos em seus próprios projetos. Os algoritmos genéticos são uma técnica de otimização baseada em princípios evolutivos. Eles foram inspirados pela seleção natural e reprodução dos seres vivos e podem ser usados para encontrar soluções para problemas complexos e multidimensionais.
+<p align="justify">
+Aqui você encontrará exemplos de implementação de algoritmos genéticos em diferentes problemas, como o problema do caixeiro viajante e a otimização de parâmetros de modelos de aprendizado de máquina.
 
-Glossário das atividades, esse material foi retirado do notbook feito por Daniel Cassar:
+
+<details><summary><h3><b>Glossário das atividades, esse material foi retirado do notbook feito por Daniel Cassar <a href="https://github.com/drcassar"> (@drcassar)</a>:</h3></b></summary>
 
 -   `Indivíduo`: um candidato para a solução do problema;
 
