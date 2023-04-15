@@ -4,7 +4,8 @@ Este é um repositório dedicado ao estudo de algoritmos genéticos. Aqui você 
 <p align="justify">
 Aqui você encontrará exemplos de implementação de algoritmos genéticos em diferentes problemas, como o problema do caixeiro viajante e a otimização de parâmetros de modelos de aprendizado de máquina.
 
-### Glossário das atividades, esse material foi retirado do notbook feito por Daniel Cassar <a href="https://github.com/drcassar"> (@drcassar)</a>:
+
+<details><summary><h3><b>Glossário das atividades, esse material foi retirado do notbook feito por Daniel Cassar <a href="https://github.com/drcassar"> (@drcassar)</a>:</h3></b></summary>
 
 -   `Indivíduo`: um candidato para a solução do problema;
 
