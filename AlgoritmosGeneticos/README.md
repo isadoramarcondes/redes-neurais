@@ -4,6 +4,30 @@ Este é um repositório dedicado ao estudo de algoritmos genéticos. Aqui você 
 <p align="justify">
 Aqui você encontrará exemplos de implementação de algoritmos genéticos em diferentes problemas, como o problema do caixeiro viajante e a otimização de parâmetros de modelos de aprendizado de máquina.
 
+- `experimento A.01 - busca aleatoria`
+O problema das caixas binárias é simples: nós temos um certo número de caixas e cada uma pode conter um valor do conjunto $\{0, 1\}$. O objetivo é encontrar uma combinação de caixas onde a soma dos valores contidos dentro delas é máximo. Como todo problema computacional, um dos desafios é "traduzir" o problema dado em estruturas computacionais. Usamos busca aleatória para resolver o problema.
+
+- `experimento A.02 - busca em grade`
+Usamos busca em grade para solucionar o problema das caixas binárias.
+
+
+- `experimento A.03 - algoritmo genetico`
+Encontrar uma solução para o problema das caixas binárias usando o algoritmo genético. Consideramos 4 caixas. Repare que o problema é o mesmo que o anterios, com a diferença que usamos a abordagem dos algoritmo genético
+
+
+- `experimento A.04 - caixas nao-binarias`
+O problema das caixas não-binárias consistem em um certo número de caixas e cada uma pode conter um número inteiro. O objetivo é encontrar uma combinação de caixas onde a soma dos valores contidos dentro delas é máximo.
+
+- `experimento A.05 - descobrindo a senha`
+Usar um algoritmo genético para descobrir uma senha. Neste problema, a função objetivo deve saber a senha correta e quantificar de alguma maneira o quão perto ou longe os palpites estão da solução. O critério de parada deste problema é quando a senha for descoberta.
+
+- experimento A.06 - o caixeiro viajante
+O problema consiste em descobrir a rota de menor distância entre $n$ pontos no plano cartesiano (ou seja, $n$ pontos com coordenadas $(x,y)$). A rota pode se iniciar em qualquer um dos pontos disponíveis e deve terminar no ponto inicial, visitando todos os demais pontos apenas uma vez. Considere que a rota entre um ponto e outro é a linha reta que liga os dois pontos.
+
+- `experimento A.07 - aplicando restricoes`
+O problema da mochila envolve encontrar um conjunto de itens de um número que definimos em nosso dicionário, cada um com um peso e valor associado, que maximize o valor total contido na mochila, considerando a capacidade limitada da mesma
+
+
 
 <details><summary><h3><b>Glossário das atividades, esse material foi retirado do notbook feito por Daniel Cassar <a href="https://github.com/drcassar"> (@drcassar)</a>:</h3></b></summary>
 
